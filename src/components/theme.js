@@ -1,5 +1,6 @@
 export const sizes = {
   s: '16px',
+  m: '24px',
 };
 
 export const colors = {

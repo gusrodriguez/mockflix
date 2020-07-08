@@ -4,7 +4,7 @@ import { colors, sizes } from '../theme';
 export const StyledHeader= styled.header`
   display: flex;
   align-items: center;
-  padding: 10px 10px 10px ${sizes.s};
+  padding: 10px 10px 10px ${sizes.m};
   font-family: 'BebasNeue';
   width:100%;
   background:${colors.darkgrey};

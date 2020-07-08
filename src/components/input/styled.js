@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { sizes } from '../theme';
 
 export const StyledInput = styled.input`
   font-family: 'BebasNeue';
@@ -12,6 +13,6 @@ export const StyledInput = styled.input`
   border: 1px darkgrey solid;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
-  text-indent: 0.62rem;
+  text-indent: ${sizes.m};
 `;
 

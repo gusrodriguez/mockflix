@@ -1,4 +1,5 @@
 import React from 'react';
+import Jump from 'react-reveal/Jump';
 import {
   StyledHeader,
 } from './styled';
@@ -6,9 +7,13 @@ import {
 function Header(props) {
   const { text } = props;
   return (
+
     <StyledHeader>
-     {text}
+      <Jump>
+        {text}
+      </Jump>
     </StyledHeader>
+
   );
 }
 

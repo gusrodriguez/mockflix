@@ -1,12 +1,25 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Route, Router, Switch } from 'react-router-dom';
+import history from './history';
+import { StyledBody } from './components/global-styled';
 import store from './store';
 import Search from './components/search';
+import Results from './components/results';
+
 
 function App() {
   return (
     <Provider store={store}>
-      <Search />
+      <React.Fragment>
+        <StyledBody />
+        <Router history={history}>
+          <Switch>
+            <Route path="/results" component={Results} />
+            <Route path="/" component={Search} />
+          </Switch>
+        </Router>
+      </React.Fragment>
     </Provider>
   )
 };
