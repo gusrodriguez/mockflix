@@ -7,7 +7,7 @@ import * as strings from './strings';
 function SearchForm() {
   return (
     <StyledForm>
-      <StyledInput />
+      <StyledInput placeholder={strings.SEARCH_PLACEHOLDER} />
       <Button text={strings.SEARCH_NOW_LABEL}/>
     </StyledForm>
   );

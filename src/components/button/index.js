@@ -11,7 +11,6 @@ function Button(props) {
     <StyledButton onClick={() => onClick()}>
       <StyledButtonTextContainer>
           <StyledButtonText>{text}</StyledButtonText>
-          <img class="icon" src="image/arrow.png" alt="" />
         </StyledButtonTextContainer>
     </StyledButton>
   );

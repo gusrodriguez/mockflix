@@ -7,7 +7,7 @@ export const StyledHeader= styled.header`
   padding: 10px 10px 10px ${sizes.s};
   font-family: 'BebasNeue';
   width:100%;
-  background:${colors.black};
+  background:${colors.darkgrey};
   color: ${colors.red};
   height:40px;
   padding-top:10px;

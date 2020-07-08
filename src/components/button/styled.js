@@ -2,24 +2,28 @@ import styled from 'styled-components';
 import { colors } from '../theme'
 
 export const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center
   cursor: pointer;
-  text-rendering: auto;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  background-color: #F40612;
-  box-sizing: border-box;
-  margin: 0em;
   width: 260px;
+  height: 68px;
+  background-color: ${colors.red};
   border: none;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   border-left: 1px grey solid;
+  transition: 0.3s;
+  &:hover {
+    background-color: ${colors.darkred};
+    border: 1px darkgrey solid;
+  }
+  &:focus {
+    outline:0;
+  }
 `;
 
 export const StyledButtonText = styled.p`
-  margin: 0;
   font-family: BebasNeue;
 `;
 
