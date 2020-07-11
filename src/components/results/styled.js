@@ -5,13 +5,13 @@ export const StyledResultsContainer = styled.div`
   border: 1px solid red;
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: ${props => props.width}px;
   height: 400px;
   justify-content: center;
   margin: 0 auto;
 `;
 
-export const StyledArrow = styled.div`
+const StyledArrow = styled.div`
   text-shadow: 1px 1px 1px #fff;
   color: white;
   z-index: 100;
@@ -19,11 +19,17 @@ export const StyledArrow = styled.div`
   text-align: center;
   position: absolute;
   top: 200px;
-  width: 10%;
   font-size: 3em;
   cursor: pointer;
   user-select: none;
-  ${props => props.right ? css`left: 90%;` : css`left: 0%;`}
+`;
+
+export const StyledLeftArrow = styled(StyledArrow)`
+  left: 0;
+`;
+
+export const StyledRightArrow = styled(StyledArrow)`
+  right: 0;
 `;
 
 export const StyledPage = styled.div`
