@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import  { css } from 'styled-components';
 
-export const StyledResultsContainer = styled.div`
-  border: 1px solid red;
+export const StyledResultsWrapper = styled.div`
+  margin-top: 60px;
+`;
+
+export const StyledCarouselContainer = styled.div`
   position: relative;
   overflow: hidden;
   width: ${props => props.width}px;

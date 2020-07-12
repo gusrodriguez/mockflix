@@ -4,14 +4,9 @@ import Header from '../header';
 
 function Card(props) {
   const { source } = props;
-
-  if (!source) return null;
-
   return (
     <StyledCardContainer>
-         <img width="300px" height="382px" src={source} />
-      <StyledCardIcon>
-      </StyledCardIcon>
+      <img width="300px" height="382px" src={source} />
     </StyledCardContainer>
   );
 };

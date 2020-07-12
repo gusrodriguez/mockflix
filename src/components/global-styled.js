@@ -6,6 +6,7 @@ export const StyledBody = createGlobalStyle`
   body {
     background-color: ${colors.black};
     min-width: 800px;
+    height: 100vh;
     @font-face {
       font-family: 'BebasNeue';
       font-style: normal;

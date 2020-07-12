@@ -7,11 +7,15 @@ import Header from '../header';
 import Card from '../card';
 import {
   StyledResultsContainer,
+  StyledResultsWrapper,
+  StyledCarouselContainer,
   StyledLeftArrow,
   StyledRightArrow,
   StyledPage,
 } from './styled';
 import { StyledLockUI } from '../lock-ui/styled';
+import LeftArrow from '../arrows/left';
+import RightArrow from '../arrows/right';
 
 function Results(props) {
   const [width, setWidth] = useState(window.innerWidth);
@@ -55,16 +59,20 @@ function Results(props) {
     </StyledPage>
   );
 
-  const CarouselUI = ({ position, handleClick, children }) => <StyledResultsContainer width={cardsNumber * cardWidth}>
-    {children}
-    <StyledLeftArrow onClick={handleClick} data-position={position - 1}>{'<'}</StyledLeftArrow>
-    <StyledRightArrow onClick={handleClick} data-position={position + 1}>{'>'}</StyledRightArrow>
-  </StyledResultsContainer>;
+  const CarouselUI = ({ position, handleClick, children }) => (
+    <StyledCarouselContainer width={cardsNumber * cardWidth}>
+      {children}
+      <StyledLeftArrow onClick={handleClick} data-position={position - 1}><LeftArrow /></StyledLeftArrow>
+      <StyledRightArrow onClick={handleClick} data-position={position + 1}><RightArrow /></StyledRightArrow>
+    </StyledCarouselContainer>
+  );
 
   const Carousel = makeCarousel(CarouselUI);
+
   return (
     <React.Fragment>
       <Header />
+      <StyledResultsWrapper>
         <Zoom when={resultsLoaded}>
           <Carousel defaultWait={0}>
             <Slide right>
@@ -89,6 +97,7 @@ function Results(props) {
             </Slide>
           </Carousel>
         </Zoom>
+      </StyledResultsWrapper>
     </React.Fragment>
   );
 }
