@@ -14,6 +14,7 @@
   "author": "Gustavo Rodriguez",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.4",
     "axios": "^0.19.2",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
@@ -48,6 +49,7 @@
     "eslint-plugin-react": "7.5.1",
     "file-loader": "^6.0.0",
     "jest": "^23.6.0",
+    "redux-devtools-extension": "^2.13.8",
     "url-loader": "^4.1.0",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",

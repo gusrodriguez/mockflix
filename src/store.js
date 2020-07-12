@@ -1,10 +1,20 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { combineReducers } from 'redux';
-import search from './components/search/reducer';
+import axios from 'axios';
+import results from './components/results/reducer';
+import MovieService from './services/movie';
 
 const reducers = combineReducers({
-  search,
+  movies: results,
 });
 
-export default createStore(reducers, applyMiddleware(thunk));
+const extraArgument = {
+  movieService: new MovieService({ axios })
+};
+
+const middlewares = [
+  thunk.withExtraArgument(extraArgument),
+]
+
+export default createStore(reducers, composeWithDevTools(applyMiddleware(...middlewares)));

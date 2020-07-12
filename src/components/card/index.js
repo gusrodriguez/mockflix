@@ -2,10 +2,14 @@ import React from 'react';
 import { StyledCardContainer, StyledCardIcon } from './styled';
 import Header from '../header';
 
-function Card() {
+function Card(props) {
+  const { source } = props;
+
+  if (!source) return null;
+
   return (
     <StyledCardContainer>
-        <img src="http://via.placeholder.com/300x400" />
+         <img width="300px" height="382px" src={source} />
       <StyledCardIcon>
       </StyledCardIcon>
     </StyledCardContainer>

@@ -3,8 +3,7 @@ import { StyledSearchContainer } from './styled';
 import Header from '../header';
 import Form from '../form';
 
-function Search(props) {
-  const { plates, auth } = props;
+function Search() {
   return (
     <React.Fragment>
       <Header />

@@ -9,7 +9,7 @@ const rotate360 = keyframes`
   }
 `;
 
-export const StyledLockUi = styled.div`
+export const StyledLockUI = styled.div`
   position:fixed;
   width:100%;
   left:0;
