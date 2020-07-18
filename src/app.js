@@ -15,7 +15,7 @@ function App() {
         <StyledBody />
         <Router history={history}>
           <Switch>
-            <Route path="/results" component={Results} />
+            <Route path="/results/:query" component={Results} />
             <Route path="/" component={Search} />
           </Switch>
         </Router>

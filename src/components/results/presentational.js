@@ -12,7 +12,7 @@ function Results(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await onLoadResults();
+      await onLoadResults(props.match.params.query);
     };
     fetchData();
   }, []);
