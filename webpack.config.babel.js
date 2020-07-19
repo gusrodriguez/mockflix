@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './');
@@ -46,8 +47,11 @@ const config = {
       },
     ],
   },
-  // Be able to concat all the css files in one.
+  // Copy images to the build directori.
   plugins: [
+    new CopyPlugin([{
+     from: `${APP_DIR}/src/assets/images/movies.jpg`, to: BUILD_DIR,
+    }]),
   ],
   watch: true,
   devtool: 'source-map',
@@ -58,6 +62,9 @@ const config = {
     port: 3000,
     historyApiFallback: true,
   },
+  // optimization: {
+  //   minimize: true
+  // },
 };
 
 module.exports = config;

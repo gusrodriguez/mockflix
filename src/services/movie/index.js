@@ -33,6 +33,7 @@ class MovieService {
 
     // Fill the related movies array
     const { data: { results: relatedResults } } = await this.axios(getGenresEndpoint(genre));
+
     this.relatedMovies = [...this.mapResultsToMovies(relatedResults, baseUrl)];
 
     const moviesResults = this.mapResultsToMovies(results, baseUrl);

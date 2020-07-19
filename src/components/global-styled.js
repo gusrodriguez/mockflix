@@ -22,7 +22,7 @@ export const StyledBody = createGlobalStyle`
       top:0;
       z-index:-1;
       opacity:0.3;
-      background: url("https://thewallpaper.co//wp-content/uploads/2019/10/preview/movie-cinema-images-movies-hd-wallpaper-posters-digital-art-collage-fan-high-definition-art-jpg.jpg");
+      background: url("../build/movies.jpg");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
