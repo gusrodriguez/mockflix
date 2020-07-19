@@ -19,7 +19,7 @@ const config = {
     rules: [
       // ES6 Loader
       {
-        test: /\.m?js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -65,6 +65,9 @@ const config = {
   // optimization: {
   //   minimize: true
   // },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  }
 };
 
 module.exports = config;

@@ -1,16 +1,17 @@
 import React from 'react';
-import Jump from 'react-reveal/Jump';
 import { StyledHeader } from './styled';
 import * as strings from './strings';
 
-function Header() {
+function Header(props) {
+  const { revealWrapper } = props;
+  const AnimationWrapper = revealWrapper || React.Fragment;
+
   return (
     <StyledHeader>
-      <Jump>
+      <AnimationWrapper>
         {strings.HEADER_TEXT}
-      </Jump>
+      </AnimationWrapper>
     </StyledHeader>
-
   );
 }
 

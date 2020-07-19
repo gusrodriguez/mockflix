@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Jump from 'react-reveal/Jump';
 import { StyledSearchContainer } from './styled';
 import Header from '../header';
 import Form from '../form';
@@ -22,7 +23,7 @@ function Search(props) {
           <StyledLockUI />
           :
           <React.Fragment>
-            <Header />
+            <Header revealWrapper={Jump} />
             <StyledSearchContainer>
               <Form />
             </StyledSearchContainer>
