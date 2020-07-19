@@ -5,7 +5,7 @@ const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './');
 
 const config = {
-  entry: `${APP_DIR}/src/index.js`,
+  entry: `${APP_DIR}/src/index.jsx`,
   mode: 'development',
 
   // Where to output the js bundle

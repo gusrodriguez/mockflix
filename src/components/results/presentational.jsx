@@ -7,7 +7,6 @@ import Carousel from '../carousel';
 import {
   StyledResultsWrapper,
 } from './styled';
-import { StyledLockUI } from '../lock-ui/styled';
 
 function Results(props) {
   const {
@@ -36,10 +35,8 @@ function Results(props) {
   return (
     <React.Fragment>
       {
-        !backgroundLoaded
+        backgroundLoaded
           ?
-          <StyledLockUI />
-          :
           <React.Fragment>
             <Header />
             <StyledResultsWrapper>
@@ -49,6 +46,8 @@ function Results(props) {
               </Zoom>
             </StyledResultsWrapper>
           </React.Fragment>
+          :
+          null
       }
     </React.Fragment>
   );
