@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { colors } from './theme';
 import bebasNeueFont from '../assets/fonts/BebasNeue-Bold.ttf';
+import image from '../../src/assets/images/movies.jpg'
 
 export const StyledBody = createGlobalStyle`
   body {
@@ -22,7 +23,7 @@ export const StyledBody = createGlobalStyle`
       top:0;
       z-index:-1;
       opacity:0.3;
-      background: url("../build/movies.jpg");
+      background: url(${image});
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;

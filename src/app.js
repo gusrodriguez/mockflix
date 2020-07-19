@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { Route, Router, Switch } from 'react-router-dom';
 import history from './history';
@@ -7,8 +7,8 @@ import store from './store';
 import Search from './components/search';
 import Results from './components/results';
 
-
 function App() {
+
   return (
     <Provider store={store}>
       <React.Fragment>
