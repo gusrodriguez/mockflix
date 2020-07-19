@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { colors } from '../theme';
 
 const rotate360 = keyframes`
   from {
@@ -16,7 +17,8 @@ export const StyledLockUI = styled.div`
   right:0;
   top:0;
   bottom:0;
-  background-color: rgba(255,255,255,0.7);
+  background-color: ${colors.red};
+  opacity: 0.6;
   z-index:9999;
   &:after {
     content:'';

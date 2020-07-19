@@ -8,21 +8,26 @@ import {
   StyledResultsWrapper,
 } from './styled';
 import { StyledLockUI } from '../lock-ui/styled';
-import BackgroundLoader from '../background-loader';
 
 function Results(props) {
-  const { onLoadResults, results } = props;
+  const {
+    results,
+    backgroundLoaded,
+    onLoadResults,
+    onLoadBackground,
+  } = props;
 
   useEffect(() => {
-    const fetchData = async () => {
-      await onLoadResults(props.match.params.query);
+    const initialize = async () => {
+      await Promise.all([
+        onLoadBackground(),
+        onLoadResults(props.match.params.query),
+      ]);
     };
-    fetchData();
+    initialize();
   }, []);
 
   const resultsLoaded = results && results.length;
-
-  const [backgroundLoaded, setBackgroundLoaded] = useState(false);
 
   // Divide the results array in two, for filling the two sliders
   const half = Math.ceil(results.length / 2);
@@ -30,19 +35,20 @@ function Results(props) {
 
   return (
     <React.Fragment>
-      <BackgroundLoader backgroundLoaded={setBackgroundLoaded} />
-      <Header />
       {
         !backgroundLoaded
           ?
           <StyledLockUI />
           :
-          <StyledResultsWrapper>
-            <Zoom when={resultsLoaded}>
-              <Carousel source={firstSliderSource} />
-              <Carousel source={secondSliderSource} />
-            </Zoom>
-          </StyledResultsWrapper>
+          <React.Fragment>
+            <Header />
+            <StyledResultsWrapper>
+              <Zoom when={resultsLoaded}>
+                <Carousel source={firstSliderSource} />
+                <Carousel source={secondSliderSource} />
+              </Zoom>
+            </StyledResultsWrapper>
+          </React.Fragment>
       }
     </React.Fragment>
   );
