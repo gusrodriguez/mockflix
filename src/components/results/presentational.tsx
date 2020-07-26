@@ -8,6 +8,8 @@ import {
   StyledResultsWrapper,
 } from './styled';
 
+import { Movie } from '../../types';
+
 type matchType = { params: { query: string } };
 type ResultsProps = {
   match: matchType,

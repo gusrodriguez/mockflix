@@ -5,7 +5,9 @@ import {
   EXPECTED_RESULTS_AMOUNT,
 } from "./constants";
 
-class MovieService {
+import { Movie, MovieService, MovieApiResult } from "../../types";
+
+class MovieDbService implements MovieService {
   axios: any;
   relatedMovies: Array<Movie>
   constructor({ axios }: any) {
@@ -63,5 +65,5 @@ class MovieService {
   }
 }
 
-export default MovieService;
+export default MovieDbService;
 

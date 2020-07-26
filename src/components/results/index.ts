@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import Results from './presentational';
 import { loadResults, loadBackground } from './actions';
+import { AppState  } from '../../types';
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = (state: AppState) => {
   const { movies : { results, backgroundLoaded } } = state;
   return ({
     results,

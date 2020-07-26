@@ -1,11 +1,11 @@
 import { handleActions } from 'redux-actions';
-import * as strings from './strings';
+import { ResultState, StatusType } from '../../types';
 
-export const DEFAULT_STATE = {
+export const DEFAULT_STATE: ResultState = {
   results: [],
-  error: null,
+  error: '',
+  status: StatusType.OFF,
   backgroundLoaded: false,
-  status: 'OFF',
 };
 
 export default (handleActions({
@@ -14,13 +14,13 @@ export default (handleActions({
     results,
     status: 'INPUT',
   }),
-  ERROR_LOADING_RESULTS: state => ({
-    ...state,
-    error: strings.ERROR_LOADING_RESULTS,
-  }),
   FINISH_LOADING_BACKGROUND: state => ({
     ...state,
     backgroundLoaded: true,
+  }),
+  ERROR_LOADING_RESULTS: (state, { payload: { error } }) => ({
+    ...state,
+    error,
   }),
 },
   DEFAULT_STATE

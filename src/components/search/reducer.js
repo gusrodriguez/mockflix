@@ -1,15 +1,17 @@
 import { handleActions } from 'redux-actions';
 
+import { StatusType } from '../../types';
+
 export const DEFAULT_STATE = {
   backgroundLoaded: false,
-  status: 'OFF',
+  status: StatusType.OFF,
 };
 
 export default (handleActions({
   FINISH_LOADING_BACKGROUND: state => ({
     ...state,
     backgroundLoaded: true,
-    status: 'INPUT',
+    status: StatusType.INPUT,
   }),
 },
   DEFAULT_STATE

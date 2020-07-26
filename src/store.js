@@ -4,15 +4,15 @@ import thunk from 'redux-thunk';
 import axios from 'axios';
 import search from './components/search/reducer';
 import results from './components/results/reducer';
-import MovieService from './services/movie';
+import MovieDbService from './services/movie';
 
 const reducers = combineReducers({
   search,
   movies: results,
 });
 
-const extraArgument = {
-  movieService: new MovieService({ axios })
+const extraArgument  = {
+  movieService: new MovieDbService({ axios })
 };
 
 const middlewares = [

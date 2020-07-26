@@ -4,8 +4,7 @@ import { preloadImage } from '../../helpers';
 
 export const finishLoadingBackground = createAction('FINISH_LOADING_BACKGROUND', () => undefined);
 
-export const loadBackground: ThunkActionCreator<
-(ruleId: string) => Promise<void> = () =>
+export const loadBackground = () =>
   async(dispatch) => {
     await preloadImage(backgroundImage);
     dispatch(finishLoadingBackground());

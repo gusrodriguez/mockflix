@@ -14,6 +14,7 @@ import {
 import LeftArrow from '../arrows/left';
 import RightArrow from '../arrows/right';
 import { DEFAULT_CARD_WIDTH, CARD_SEPARATION } from './constants';
+import { Movie } from '../../types';
 
 type CarouselProps = {
   source: Array<Movie>,
