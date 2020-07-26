@@ -8,7 +8,7 @@ function SearchForm() {
   return (
     <StyledForm>
       <StyledInput placeholder={strings.SEARCH_PLACEHOLDER} />
-      <Button text={strings.SEARCH_NOW_LABEL}/>
+      <Button onClick={() => {}} text={strings.SEARCH_NOW_LABEL}/>
     </StyledForm>
   );
 };

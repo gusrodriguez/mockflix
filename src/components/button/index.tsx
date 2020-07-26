@@ -5,7 +5,12 @@ import {
   StyledButtonTextContainer
 } from './styled';
 
-function Button(props) {
+type ButtonProps = {
+  text: string,
+  onClick: () => void,
+}
+
+function Button(props: ButtonProps) {
   const { text, onClick } = props;
   return (
     <StyledButton onClick={() => onClick()}>
