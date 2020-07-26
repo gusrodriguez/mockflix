@@ -45,6 +45,11 @@ const config = {
           },
         ],
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
     ],
   },
   // Copy images to the build directori.
@@ -66,8 +71,8 @@ const config = {
   //   minimize: true
   // },
   resolve: {
-    extensions: ['.js', '.jsx'],
-  }
+    extensions: ['.js', '.jsx','.tsx', '.ts'],
+  },
 };
 
 module.exports = config;

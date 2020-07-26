@@ -1,26 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import chunk from 'lodash/chunk';
 import Zoom from 'react-reveal/Zoom';
 import Header from '../header';
 import Carousel from '../carousel';
-// import image from '../../assets/images/movies.jpg'
+
 import {
   StyledResultsWrapper,
 } from './styled';
 
-function Results(props) {
+type matchType = { params: { query: string } };
+type ResultsProps = {
+  match: matchType,
+  results: Array<Movie>,
+  backgroundLoaded: boolean,
+  onLoadBackground: () => void,
+  onLoadResults: (query: string) => void,
+}
+
+function Results(props: ResultsProps) {
   const {
     results,
     backgroundLoaded,
     onLoadResults,
     onLoadBackground,
+    match,
   } = props;
 
   useEffect(() => {
-    const initialize = async () => {
+    const initialize = async (): Promise<void> => {
       await Promise.all([
         onLoadBackground(),
-        onLoadResults(props.match.params.query),
+        onLoadResults(match.params.query),
       ]);
     };
     initialize();
@@ -30,7 +40,8 @@ function Results(props) {
 
   // Divide the results array in two, for filling the two sliders
   const half = Math.ceil(results.length / 2);
-  const [firstSliderSource, secondSliderSource] = chunk(results, half);
+
+  const [firstSliderSource, secondSliderSource] = chunk(results , half);
 
   return (
     <React.Fragment>

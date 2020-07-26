@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import  { css } from 'styled-components';
 
-export const StyledCarouselContainer = styled.div`
+export const StyledCarouselContainer = styled.div<{ width: number }>`
   position: relative;
   overflow: hidden;
   width: ${props => props.width}px;

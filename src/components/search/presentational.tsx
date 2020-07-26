@@ -4,11 +4,16 @@ import { StyledSearchContainer } from './styled';
 import Header from '../header';
 import Form from '../form';
 
-function Search(props) {
+type SearchProps = {
+  backgroundLoaded: boolean,
+  onLoadBackground: () => void,
+}
+
+function Search(props: SearchProps) {
   const { backgroundLoaded, onLoadBackground } = props;
 
   useEffect(() => {
-    const initialize = async () => {
+    const initialize = async (): Promise<void> => {
       await onLoadBackground();
     };
     initialize();

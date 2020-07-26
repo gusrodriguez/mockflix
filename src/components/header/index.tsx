@@ -2,7 +2,11 @@ import React from 'react';
 import { StyledHeader } from './styled';
 import * as strings from './strings';
 
-function Header(props) {
+type HeaderProps = {
+  revealWrapper?: React.ElementType,
+}
+
+function Header(props: HeaderProps) {
   const { revealWrapper } = props;
   const AnimationWrapper = revealWrapper || React.Fragment;
 
@@ -13,6 +17,10 @@ function Header(props) {
       </AnimationWrapper>
     </StyledHeader>
   );
+}
+
+Header.defaultProps = {
+  children: null,
 }
 
 export default Header;

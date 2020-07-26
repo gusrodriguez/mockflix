@@ -6,12 +6,14 @@ import {
 } from "./constants";
 
 class MovieService {
-  constructor({ axios }) {
+  axios: any;
+  relatedMovies: Array<Movie>
+  constructor({ axios }: any) {
     this.axios = axios;
     this.relatedMovies = [];
   }
 
-  async loadMovies(query) {
+  async loadMovies(query: string): Promise<Array<Movie>> {
     const [configuration, movies] = await Promise.all([
       this.axios(CONFIGURATION_ENDPOINT),
       this.axios(getMoviesEndpoint(query, 1))
@@ -44,20 +46,19 @@ class MovieService {
     const allResults = resultsDifference > 0 ? [...moviesResults, ...this.borrowFromRelatedMovies(resultsDifference)] : moviesResults;
 
     return allResults.slice(0, EXPECTED_RESULTS_AMOUNT);
-
   }
 
   // Related movies will always have an image. Notice that the API could send results with no image.
-  mapResultsToMovies(results, baseUrl) {
+  mapResultsToMovies(results: Array<MovieApiResult>, baseUrl: string): Array<Movie>  {
     return results
-      .filter(result => result.poster_path)
+      .filter((result: MovieApiResult) => result.poster_path)
       .map(filteredResult => ({
         ...filteredResult,
         imgSource: `${baseUrl}w500${filteredResult.poster_path}`,
       }));
   }
 
-  borrowFromRelatedMovies(amount) {
+  borrowFromRelatedMovies(amount: number): Array<Movie> {
     return this.relatedMovies.splice(0, amount);
   }
 }

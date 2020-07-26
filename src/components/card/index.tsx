@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { StyledCardContainer, StyledCardIcon } from './styled';
-import Header from '../header';
+import { StyledCardContainer } from './styled';
 import { IMAGE_PLACEHOLDER } from '../../services/movie/constants';
 
-function Card(props) {
+type CardProps = {
+  image?: string,
+}
+
+function Card(props: CardProps) {
   const { image } = props;
   const [imageLoaded, setImageLoaded] = useState(false);
 
