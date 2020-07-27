@@ -1,4 +1,5 @@
 export const sizes = {
+  xs: '12px',
   s: '16px',
   m: '24px',
 };

@@ -23,6 +23,7 @@
     "moment": "^2.22.2",
     "prop-types": "^15.6.0",
     "react": "^16.6.3",
+    "react-autosuggest": "^10.0.2",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.2",
     "react-reveal": "^1.2.2",

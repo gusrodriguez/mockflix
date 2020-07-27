@@ -49,3 +49,8 @@ type ExtraArgument = {
 }
 
 export type AppThunk = ThunkAction<void, AppState, ExtraArgument, AnyAction>
+
+export type SuggestionsState = {
+  value: string,
+  suggestions: Array<string>,
+}
