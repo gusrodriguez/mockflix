@@ -12,5 +12,4 @@ export const colors = {
   darkgrey: '#292929',
   darkred: '#B12025',
   red: '#E61E26',
-  violet: '#B15D7F',
 }

@@ -19,7 +19,6 @@
     "history": "^4.7.2",
     "lodash.chunk": "^4.2.0",
     "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1",
     "lodash.uniqueid": "^4.0.1",
     "moment": "^2.22.2",
     "prop-types": "^15.6.0",
