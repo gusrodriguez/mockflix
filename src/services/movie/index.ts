@@ -3,6 +3,7 @@ import {
   getGenresEndpoint,
   CONFIGURATION_ENDPOINT,
   EXPECTED_RESULTS_AMOUNT,
+  NUMBER_OF_SUGGESTIONS,
 } from "./constants";
 
 import { Movie, MovieService, MovieApiResult } from "../../types";
@@ -62,6 +63,12 @@ class MovieDbService implements MovieService {
 
   borrowFromRelatedMovies(amount: number): Array<Movie> {
     return this.relatedMovies.splice(0, amount);
+  }
+
+  async loadSuggestions(query: string): Promise<Array<string>> {
+    const { data: { results } } = await this.axios(getMoviesEndpoint(query, 1));
+    return results.map((result) => result.title )
+      .slice(0, NUMBER_OF_SUGGESTIONS) as Array<string>;
   }
 }
 

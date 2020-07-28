@@ -17,6 +17,7 @@ export interface MovieService {
   axios: any;
   relatedMovies: Array<Movie>;
   loadMovies: (query: string) => Promise<Array<Movie>>;
+  loadSuggestions: (query: string) => Promise<Array<string>>;
 }
 
 export type Movie = {
@@ -53,4 +54,9 @@ export type AppThunk = ThunkAction<void, AppState, ExtraArgument, AnyAction>
 export type SuggestionsState = {
   value: string,
   suggestions: Array<string>,
+}
+
+export type DebounceState = {
+  isDebounced: boolean,
+  fn: (({ value }) => Promise<void>) | null,
 }

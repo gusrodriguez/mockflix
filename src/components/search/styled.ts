@@ -16,6 +16,7 @@ export const StyledForm = styled.form`
   & .react-autosuggest__container {
     background: ${colors.white};
     position: relative;
+    border-radius: 2px;
   }
   & .react-autosuggest__suggestions-list {
     margin: 0;
@@ -25,7 +26,8 @@ export const StyledForm = styled.form`
     list-style: none;
     padding: 12px 12px 12px 24px;
     &:hover {
-      background: ${colors.darkred}
+      background: ${colors.red}
+      color: ${colors.white}
     }
     transition: 0.2s;
     cursor: pointer;

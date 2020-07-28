@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Search from './presentational';
-import { loadBackground } from './actions';
+import { loadBackground, loadSuggestions } from './actions';
 
 export const mapStateToProps = (state) => {
   const { search : { backgroundLoaded } } = state;
@@ -11,6 +11,7 @@ export const mapStateToProps = (state) => {
 
 export const actions = {
   onLoadBackground: loadBackground,
+  onLoadSuggestions: loadSuggestions,
 }
 
 export default connect(mapStateToProps, actions)(Search);
