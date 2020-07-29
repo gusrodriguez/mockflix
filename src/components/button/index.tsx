@@ -7,13 +7,13 @@ import {
 
 type ButtonProps = {
   text: string,
-  onClick: () => void,
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function Button(props: ButtonProps) {
   const { text, onClick } = props;
   return (
-    <StyledButton onClick={() => onClick()}>
+    <StyledButton onClick={onClick}>
       <StyledButtonTextContainer>
           <StyledButtonText>{text}</StyledButtonText>
         </StyledButtonTextContainer>

@@ -3,7 +3,9 @@ import { withRouter } from "react-router-dom";
 import Autosuggest from 'react-autosuggest';
 import debounce from 'lodash/debounce';
 import Input from '../input';
-import { SEARCH_PLACEHOLDER } from './strings';
+import { SEARCH_NOW_LABEL } from './strings';
+import Button from '../button';
+import { SEARCH_PLACEHOLDER, getResultsRoute } from './strings';
 import { AutosuggestStylesWrapper } from './styled';
 import {
   SuggestionsState,
@@ -15,7 +17,6 @@ import { KeyCodes } from '../../enums';
 function MoviesAutosuggest(props) {
   const {
     onLoadSuggestions,
-    history,
   } = props;
 
   const DEFAULT_SUGGESTION_STATE = {
@@ -23,6 +24,7 @@ function MoviesAutosuggest(props) {
     suggestions: [],
     valueSelected: false,
   };
+
   const DEFAULT_DEBOUNCE_STATE = {
     isDebounced: false,
     fn: null,
@@ -30,6 +32,9 @@ function MoviesAutosuggest(props) {
 
   const [suggestionsState, setSuggestionsState] = useState<SuggestionsState>(DEFAULT_SUGGESTION_STATE);
   const [debounceState, setDebounceState] = useState<DebounceState>(DEFAULT_DEBOUNCE_STATE);
+
+  // fully reload on purpose, to workaround the issue of react router cache messing the carousels animation effect
+  const redirect = route => { window.location.href = route };
 
   const onSuggestionsFetchRequested = async ({ value }) => {
     const results: Array<string> = await onLoadSuggestions(value);
@@ -57,12 +62,16 @@ function MoviesAutosuggest(props) {
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.keyCode === KeyCodes.ENTER) {
-      history.push(`results/${suggestionsState.value}`)
+     redirect(getResultsRoute(suggestionsState.value));
     }
   };
 
-  const onClick = (event: MouseEventWithCustomTarget<HTMLInputElement>) => {
-    history.push(`results/${event.target.innerText}`)
+  const onSuggestionClick = (event: MouseEventWithCustomTarget<HTMLInputElement>) => {
+    redirect(getResultsRoute(event.target.innerText));
+  };
+
+  const onButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    redirect(getResultsRoute(suggestionsState.value));
   };
 
   const onSuggestionsClearRequested = () => {
@@ -80,7 +89,7 @@ function MoviesAutosuggest(props) {
   const getSuggestionValue = suggestion => suggestion;
 
   const renderSuggestionsContainer = ({ containerProps, children }) => (
-    <div onClick={onClick} {...containerProps}>
+    <div onClick={onSuggestionClick} {...containerProps}>
       {children}
     </div>
   );
@@ -93,20 +102,23 @@ function MoviesAutosuggest(props) {
     onKeyDown,
   };
 
-  const renderInputComponent = (inputProps) => <Input {...inputProps} />
+  const renderInputComponent = inputProps => <Input {...inputProps} />
 
   return (
-    <AutosuggestStylesWrapper>
-      <Autosuggest
-        suggestions={suggestionsState.suggestions}
-        onSuggestionsFetchRequested={debounceState.fn}
-        getSuggestionValue={getSuggestionValue}
-        renderSuggestion={renderSuggestion}
-        renderInputComponent={renderInputComponent}
-        renderSuggestionsContainer={renderSuggestionsContainer}
-        inputProps={inputProps}
-      />
-    </AutosuggestStylesWrapper>
+    <React.Fragment>
+      <AutosuggestStylesWrapper>
+        <Autosuggest
+          suggestions={suggestionsState.suggestions}
+          onSuggestionsFetchRequested={debounceState.fn}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          renderInputComponent={renderInputComponent}
+          renderSuggestionsContainer={renderSuggestionsContainer}
+          inputProps={inputProps}
+        />
+      </AutosuggestStylesWrapper>
+      <Button onClick={onButtonClick} text={SEARCH_NOW_LABEL} />
+    </React.Fragment>
   );
 }
 

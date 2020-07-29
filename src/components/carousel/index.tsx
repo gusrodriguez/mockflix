@@ -57,7 +57,7 @@ function Carousel(props: CarouselProps) {
     // Map the source to cards components
     const allCards = source.map(
       (element, index) =>
-        <Card image={element.imgSource} key={`card_${index}`} />
+        <Card image={element.imgSource} key={`card_${uniqueId()}`} />
     );
 
     const pages = chunk(allCards, cardsNumber);
