@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
+import { withRouter } from "react-router-dom";
 import Autosuggest from 'react-autosuggest';
 import debounce from 'lodash/debounce';
-import IconClose from '../icon-close';
+import Input from '../input';
 import { SEARCH_PLACEHOLDER } from './strings';
-import { StyledInput } from '../input/styled';
-import { IconCloseWrapper, AutosuggestStylesWrapper } from './styled';
-import { SuggestionsState, DebounceState } from '../../types';
+import { AutosuggestStylesWrapper } from './styled';
+import {
+  SuggestionsState,
+  DebounceState,
+  MouseEventWithCustomTarget,
+} from '../../types';
+import { KeyCodes } from '../../enums';
 
 function MoviesAutosuggest(props) {
   const {
     onLoadSuggestions,
+    history,
   } = props;
 
   const DEFAULT_SUGGESTION_STATE = {
@@ -24,7 +30,6 @@ function MoviesAutosuggest(props) {
 
   const [suggestionsState, setSuggestionsState] = useState<SuggestionsState>(DEFAULT_SUGGESTION_STATE);
   const [debounceState, setDebounceState] = useState<DebounceState>(DEFAULT_DEBOUNCE_STATE);
-  const [openState, setOpenState] = useState<boolean>(false);
 
   const onSuggestionsFetchRequested = async ({ value }) => {
     const results: Array<string> = await onLoadSuggestions(value);
@@ -42,16 +47,26 @@ function MoviesAutosuggest(props) {
     });
   }
 
-  const onSuggestionsClearRequested = () => {
-    setSuggestionsState({ ...DEFAULT_SUGGESTION_STATE });
-  };
-
   const onChange = (event, { newValue }) => {
     setSuggestionsState(prevState => ({
       ...prevState,
       suggestions: newValue ? prevState.suggestions : [],
       value: newValue,
     }));
+  };
+
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.keyCode === KeyCodes.ENTER) {
+      history.push(`results/${suggestionsState.value}`)
+    }
+  };
+
+  const onClick = (event: MouseEventWithCustomTarget<HTMLInputElement>) => {
+    history.push(`results/${event.target.innerText}`)
+  };
+
+  const onSuggestionsClearRequested = () => {
+    setSuggestionsState({ ...DEFAULT_SUGGESTION_STATE });
   };
 
   const renderSuggestion = (suggestion: string) => {
@@ -64,36 +79,21 @@ function MoviesAutosuggest(props) {
 
   const getSuggestionValue = suggestion => suggestion;
 
-  const renderSuggestionsContainer = ({ containerProps, children }) => {
-    const isOpen = containerProps.className.includes('react-autosuggest__suggestions-container--open');
-    setOpenState(isOpen);
-
-    return (
-      <div {...containerProps}>
-        {children}
-      </div>
-    );
-  }
+  const renderSuggestionsContainer = ({ containerProps, children }) => (
+    <div onClick={onClick} {...containerProps}>
+      {children}
+    </div>
+  );
 
   const inputProps = {
     placeholder: SEARCH_PLACEHOLDER,
     value: suggestionsState.value,
+    onSuggestionsClearRequested,
     onChange,
+    onKeyDown,
   };
 
-  const renderInputComponent = (inputProps) => {
-    return (
-      <React.Fragment>
-        <StyledInput {...inputProps} />
-        {
-          openState &&
-          <IconCloseWrapper>
-            <IconClose clearInput={onSuggestionsClearRequested} />
-          </IconCloseWrapper>
-        }
-      </React.Fragment>
-    );
-  }
+  const renderInputComponent = (inputProps) => <Input {...inputProps} />
 
   return (
     <AutosuggestStylesWrapper>
@@ -110,5 +110,5 @@ function MoviesAutosuggest(props) {
   );
 }
 
-export default MoviesAutosuggest;
+export default withRouter(MoviesAutosuggest);
 

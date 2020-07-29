@@ -8,7 +8,7 @@ export const StyledSearchContainer = styled.section`
   margin: 200px auto;
 `;
 
-export const StyledForm = styled.form`
+export const StyledForm = styled.div`
   display: flex;
   font-family: 'BebasNeue';
   font-size: 24px;

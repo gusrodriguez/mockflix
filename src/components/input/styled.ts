@@ -16,3 +16,11 @@ export const StyledInput = styled.input`
   text-indent: ${sizes.m};
 `;
 
+export const IconCloseWrapper = styled.div`
+  margin: ${sizes.xs};
+  cursor: pointer;
+  position: absolute;
+  right: ${sizes.xs};
+  top: ${sizes.xs};
+  cursor: pointer;
+`;

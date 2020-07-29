@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { StatusType } from '../../types';
+import { StatusType } from '../../enums';
 
 export const DEFAULT_STATE = {
   backgroundLoaded: false,

@@ -1,12 +1,5 @@
 import styled from 'styled-components';
-import { sizes, colors } from '../theme';
-
-export const IconCloseWrapper = styled.div`
-  margin: ${sizes.xs};
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-`;
+import { colors } from '../theme';
 
 export const AutosuggestStylesWrapper = styled.div`
   & .react-autosuggest__container {

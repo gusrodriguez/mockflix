@@ -1,12 +1,6 @@
 import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-// Enums
-export enum StatusType {
-  OFF = 'OFF',
-  INPUT = 'INPUT',
-};
-
 // Services
 export type MovieApiResult = {
   genre_ids: Array<number>,
@@ -59,4 +53,12 @@ export type SuggestionsState = {
 export type DebounceState = {
   isDebounced: boolean,
   fn: (({ value }) => Promise<void>) | null,
+}
+
+export interface EventTargetWithInnerText extends EventTarget {
+  innerText: string,
+}
+
+export interface MouseEventWithCustomTarget<HtmlInputElement> extends React.MouseEvent<HtmlInputElement> {
+  target: EventTargetWithInnerText,
 }

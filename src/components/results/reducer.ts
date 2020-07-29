@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
-import { ResultState, StatusType } from '../../types';
+import { ResultState } from '../../types';
+import {  StatusType } from '../../enums';
 
 export const DEFAULT_STATE: ResultState = {
   results: [],
