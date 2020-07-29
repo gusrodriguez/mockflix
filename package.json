@@ -1,7 +1,7 @@
 {
   "name": "mockflix",
   "version": "1.0.0",
-  "description": "An application to order veggie food",
+  "description": "An application search moviies and do nothing else",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --watch",

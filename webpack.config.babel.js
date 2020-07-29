@@ -1,5 +1,5 @@
 const path = require('path');
-// const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './');
@@ -54,12 +54,12 @@ const config = {
   },
   // Copy images to the build directori.
   plugins: [
-    // new CopyPlugin([{
-    //  from: `${APP_DIR}/src/assets/images/movies.jpg`, to: BUILD_DIR,
-    // }]),
+    new CopyPlugin([{
+     from: `${APP_DIR}/index.html`, to: BUILD_DIR,
+    }]),
   ],
   watch: true,
-  devtool: 'source-map',
+  //devtool: 'source-map',
   watchOptions: {
     poll: true,
   },
@@ -67,9 +67,9 @@ const config = {
     port: 3000,
     historyApiFallback: true,
   },
-  // optimization: {
-  //   minimize: true
-  // },
+  optimization: {
+    minimize: true
+  },
   resolve: {
     extensions: ['.js', '.jsx','.tsx', '.ts'],
   },
