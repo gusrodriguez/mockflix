@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withRouter } from "react-router-dom";
 import Autosuggest from 'react-autosuggest';
 import debounce from 'lodash/debounce';
 import Input from '../input';
@@ -122,5 +121,5 @@ function MoviesAutosuggest(props) {
   );
 }
 
-export default withRouter(MoviesAutosuggest);
+export default MoviesAutosuggest;
 

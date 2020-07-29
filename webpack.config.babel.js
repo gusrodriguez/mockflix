@@ -56,19 +56,14 @@ const config = {
   plugins: [
     new CopyPlugin([{
      from: `${APP_DIR}/index.html`, to: BUILD_DIR,
+     from: `${APP_DIR}/_redirects`, to: BUILD_DIR,
     }]),
   ],
-  watch: true,
-  //devtool: 'source-map',
-  watchOptions: {
-    poll: true,
-  },
+  watch: false,
+  devtool: 'source-map',
   devServer: {
     port: 3000,
     historyApiFallback: true,
-  },
-  optimization: {
-    minimize: true
   },
   resolve: {
     extensions: ['.js', '.jsx','.tsx', '.ts'],
