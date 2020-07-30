@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { StyledCardContainer } from './styled';
+import {
+  StyledCardContainer,
+  StyledCardHover,
+  StyledImageWrapper,
+} from './styled';
 import { IMAGE_PLACEHOLDER } from '../../services/movie/constants';
+import playButtonImage from '../../assets/images/play-button.png';
 
 type CardProps = {
   image?: string,
@@ -18,6 +23,15 @@ function Card(props: CardProps) {
         src={imageLoaded && image ? image : IMAGE_PLACEHOLDER}
         onLoad={() => setImageLoaded(true)}
       />
+      <StyledCardHover>
+        <StyledImageWrapper>
+          <img
+            width="90px"
+            height="90px"
+            src={playButtonImage}
+          />
+        </StyledImageWrapper>
+      </StyledCardHover>
     </StyledCardContainer>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import {
   StyledHeader,
   StyledBackIconWrapper,
@@ -9,12 +9,12 @@ import {
 import * as strings from './strings';
 import Back from '../arrows/back';
 
-// type HeaderProps = {
-//   revealWrapper?: React.ElementType,
-// }
+interface HeaderProps extends RouteComponentProps {
+  revealWrapper?: React.ElementType,
+  showBack: boolean,
+}
 
-function Header(props) {
-  debugger;
+function Header(props: HeaderProps) {
   const { revealWrapper, showBack, history } = props;
   const AnimationWrapper = revealWrapper || React.Fragment;
 
@@ -38,10 +38,6 @@ function Header(props) {
       }
     </StyledHeader>
   );
-}
-
-Header.defaultProps = {
-  children: null,
 }
 
 export default withRouter(Header);
