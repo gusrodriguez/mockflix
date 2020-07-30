@@ -14,7 +14,6 @@ export const StyledBody = createGlobalStyle`
       font-style: normal;
       font-weight: 400;
       src:  url('${bebasNeueFontEot}?#iefix') format('embedded-opentype'), url(${bebasNeueFont}) format('truetype');
-      font-display: fallback;
     }
     &:before {
       content:"";

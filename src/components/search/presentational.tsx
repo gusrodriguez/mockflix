@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import FontFaceObserver from 'fontfaceobserver';
 import Jump from 'react-reveal/Jump';
 import MoviesAutosuggest from '../movies-autosuggest';
 import Header from '../header';
@@ -11,8 +12,15 @@ function Search(props) {
     onLoadSuggestions,
   } = props;
 
+  // Convert the font loading in a promise and wait for it to load
+  const font = new FontFaceObserver('BebasNeue', {
+    style: 'normal',
+    weight: 400,
+  })
+
   useEffect(() => {
     const initialize = async (): Promise<void> => {
+      await font.load();
       await onLoadBackground();
     };
     initialize();
