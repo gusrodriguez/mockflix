@@ -16,10 +16,13 @@ export const AutosuggestStylesWrapper = styled.div`
     background: ${colors.red}
     color: ${colors.white}
   }
+
   & li {
     list-style: none;
     padding: 12px 12px 12px 24px;
     transition: 0.2s;
     cursor: pointer;
   }
+
+  input[type=text]::-ms-clear { display: none; }
 `;

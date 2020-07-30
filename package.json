@@ -51,6 +51,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "copy-webpack-plugin": "^4.6.0",
+    "core-js": "^3.6.5",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "4.14.0",

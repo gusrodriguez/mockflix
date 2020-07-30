@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "resolveJsonModule": true,
     "noEmit": false,
     "module": "commonjs",
-    "target": "es2018",
     "lib": [
       "es2018",
       "esnext.asynciterable",

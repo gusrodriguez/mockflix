@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { colors } from './theme';
 import bebasNeueFont from '../assets/fonts/BebasNeue-Bold.ttf';
+import bebasNeueFontEot from '../assets/fonts/BebasNeue-Bold.eot';
 import image from '../../src/assets/images/movies.jpg'
 
 export const StyledBody = createGlobalStyle`
@@ -12,7 +13,8 @@ export const StyledBody = createGlobalStyle`
       font-family: 'BebasNeue';
       font-style: normal;
       font-weight: 400;
-      src: url(${bebasNeueFont}); format('ttf');
+      src:  url('${bebasNeueFontEot}?#iefix') format('embedded-opentype'), url(${bebasNeueFont}) format('truetype');
+      font-display: fallback;
     }
     &:before {
       content:"";

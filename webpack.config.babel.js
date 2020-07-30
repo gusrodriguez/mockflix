@@ -5,7 +5,7 @@ const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './');
 
 const config = {
-  entry: `${APP_DIR}/src/index.jsx`,
+  entry: ['core-js/stable/promise', `${APP_DIR}/src/index.jsx`],
   mode: 'development',
 
   // Where to output the js bundle
@@ -19,7 +19,7 @@ const config = {
     rules: [
       // ES6 Loader
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
