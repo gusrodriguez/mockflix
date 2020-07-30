@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import FontFaceObserver from 'fontfaceobserver';
-import Jump from 'react-reveal/Jump';
 import MoviesAutosuggest from '../movies-autosuggest';
 import Header from '../header';
 import { StyledForm, StyledSearchContainer } from './styled';
@@ -32,7 +31,7 @@ function Search(props) {
         backgroundLoaded
           ?
           <React.Fragment>
-            <Header revealWrapper={Jump} showBack={false} />
+            <Header showBack={false} />
             <StyledSearchContainer>
               <StyledForm>
                 <MoviesAutosuggest onLoadSuggestions={onLoadSuggestions} />
