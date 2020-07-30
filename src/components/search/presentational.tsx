@@ -32,7 +32,7 @@ function Search(props) {
         backgroundLoaded
           ?
           <React.Fragment>
-            <Header revealWrapper={Jump} />
+            <Header revealWrapper={Jump} showBack={false} />
             <StyledSearchContainer>
               <StyledForm>
                 <MoviesAutosuggest onLoadSuggestions={onLoadSuggestions} />

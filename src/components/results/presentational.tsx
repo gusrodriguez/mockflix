@@ -51,7 +51,7 @@ function Results(props: ResultsProps) {
         backgroundLoaded
           ?
           <React.Fragment>
-            <Header />
+            <Header showBack={true} />
             <StyledResultsWrapper>
               <Zoom when={resultsLoaded}>
                 <Carousel source={firstSliderSource} />
