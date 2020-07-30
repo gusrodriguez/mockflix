@@ -1,17 +1,23 @@
 import styled from 'styled-components';
-import { colors } from '../theme';
 
 export const StyledCardHover = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.7;
-  background: ${colors.darkgrey};
   z-index: 1;
   position: absolute;
   width: 300px;
   height: 382px;
-  display: none;
+  visibility: hidden;
   top: 21px;
+  backgound-color: rgba(0,0,0,0);
+  transition: background-color 300ms;
+`;
+
+export const StyledImageWrapper = styled.div`
+  cursor: pointer;
+  visibility: hidden;
+  transition: visiibility 300ms;
 `;
 
 export const StyledCardContainer = styled.div`
@@ -19,11 +25,12 @@ export const StyledCardContainer = styled.div`
     position:relative;
     &:hover {
       ${StyledCardHover} {
-        display: flex;
+        visibility: visible;
+        background-color: rgba(0, 0, 255,0.3);
+      }
+      ${StyledImageWrapper} {
+        visibility: visible;
       }
     }
 `;
 
-export const StyledImageWrapper = styled.div`
-cursor: pointer;
-`;
