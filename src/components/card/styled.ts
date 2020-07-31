@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../theme';
+import { colors, sizes } from '../theme';
 
 export const StyledCardHover = styled.div`
   display: flex;
@@ -23,7 +23,7 @@ export const StyledTooltip  = styled.div`
   visibility: hidden;
   width: 250px;
   height: 100px;
-  font-size: 24px;
+  font-size: ${sizes.m};
   background-color: ${colors.red};
   color: ${colors.white}
   text-align: center;

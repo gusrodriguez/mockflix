@@ -5,7 +5,7 @@ const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './');
 
 const config = {
-  entry: ['core-js/stable/promise', `${APP_DIR}/src/index.jsx`],
+  entry: ['core-js/stable/promise', `${APP_DIR}/src/index.tsx`],
   mode: 'development',
 
   // Where to output the js bundle
