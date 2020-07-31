@@ -5,6 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 export type MovieApiResult = {
   genre_ids: Array<number>,
   poster_path: string,
+  title: string,
 }
 
 export interface MovieService {
@@ -45,6 +46,7 @@ type ExtraArgument = {
 
 export type AppThunk = ThunkAction<void, AppState, ExtraArgument, AnyAction>
 
+// States
 export type SuggestionsState = {
   value: string,
   suggestions: Array<string>,
@@ -55,6 +57,7 @@ export type DebounceState = {
   fn: (({ value }) => Promise<void>) | null,
 }
 
+// Html Elements
 export interface EventTargetWithInnerText extends EventTarget {
   innerText: string,
 }

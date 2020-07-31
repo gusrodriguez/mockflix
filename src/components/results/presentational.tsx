@@ -21,11 +21,11 @@ type ResultsProps = {
 
 function Results(props: ResultsProps) {
   const {
+    match,
     results,
     backgroundLoaded,
     onLoadResults,
     onLoadBackground,
-    match,
   } = props;
 
   useEffect(() => {

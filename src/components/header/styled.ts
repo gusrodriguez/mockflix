@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { colors, sizes } from '../theme';
 
+const transitionDuration = '300ms';
+
 export const StyledHeader= styled.header`
   display: flex;
   align-items: center;
@@ -26,7 +28,7 @@ export const StyledBackText = styled.div`
   margin-top: 5px;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 300ms, transform 300ms;
+  transition: visibility 0s linear ${transitionDuration}, opacity ${transitionDuration}, transform ${transitionDuration};
 
 `;
 
@@ -36,7 +38,7 @@ export const StyledBackIconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 36px;
-  transition: transform 300ms;
+  transition: transform ${transitionDuration};
   &:hover {
     transform: scale(1.3);
   }
@@ -44,7 +46,7 @@ export const StyledBackIconWrapper = styled.div`
     visibility: visible;
     opacity: 1;
     transform: translate(-20px);
-    transition: visibility 0s linear 0s, opacity 300ms;
+    transition: visibility 0s linear 0s, opacity ${transitionDuration};
   }
 `;
 
@@ -52,4 +54,13 @@ export const StyledBackIconWrapper = styled.div`
 export const StyledBack = styled.div`
   display: flex;
   flex-direction: row-reverse;
+`;
+
+export const StyledPlayMessage = styled.div`
+  color: ${colors.white};
+  font-size :${sizes.m};
+`;
+
+export const StyledLogoWrapper = styled.div`
+  cursor: pointer;
 `;

@@ -3,9 +3,11 @@ import {
   StyledCardContainer,
   StyledCardHover,
   StyledImageWrapper,
+  StyledTooltip,
 } from './styled';
 import { IMAGE_PLACEHOLDER } from '../../services/movie/constants';
 import playButtonImage from '../../assets/images/play-button.png';
+import * as strings from './strings';
 
 type CardProps = {
   image?: string,
@@ -30,6 +32,7 @@ function Card(props: CardProps) {
             height="90px"
             src={playButtonImage}
           />
+          <StyledTooltip>{strings.PLAY_MESSAGE}</StyledTooltip>
         </StyledImageWrapper>
       </StyledCardHover>
     </StyledCardContainer>

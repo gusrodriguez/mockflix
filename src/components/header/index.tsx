@@ -5,18 +5,20 @@ import {
   StyledBackIconWrapper,
   StyledBackText,
   StyledBack,
+  StyledLogoWrapper,
 } from './styled';
 import * as strings from './strings';
 import Back from '../arrows/back';
 
 interface HeaderProps extends RouteComponentProps {
-  revealWrapper?: React.ElementType,
   showBack: boolean,
 }
 
 function Header(props: HeaderProps) {
-  const { revealWrapper, showBack, history } = props;
-  const AnimationWrapper = revealWrapper || React.Fragment;
+  const {
+    showBack,
+    history,
+  } = props;
 
   const backToSearch = () => {
     history.push('/search');
@@ -24,9 +26,9 @@ function Header(props: HeaderProps) {
 
   return (
     <StyledHeader>
-      <AnimationWrapper>
+      <StyledLogoWrapper onClick={backToSearch}>
         {strings.HEADER_TEXT}
-      </AnimationWrapper>
+      </StyledLogoWrapper>
       {
         showBack &&
         <StyledBack>

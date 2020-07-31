@@ -67,7 +67,9 @@ class MovieDbService implements MovieService {
 
   async loadSuggestions(query: string): Promise<Array<string>> {
     const { data: { results } } = await this.axios(getMoviesEndpoint(query, 1));
-    return results.map((result) => result.title )
+    return results
+      .filter((result: MovieApiResult) => !result.title.includes('.'))
+      .map((result: MovieApiResult) => result.title)
       .slice(0, NUMBER_OF_SUGGESTIONS) as Array<string>;
   }
 }
