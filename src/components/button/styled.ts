@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { colors } from '../theme'
 
 export const StyledButton = styled.button`
-  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center
@@ -26,6 +25,7 @@ export const StyledButton = styled.button`
 
 export const StyledButtonText = styled.p`
   font-family: BebasNeue;
+  margin: 0;
 `;
 
 export const StyledButtonTextContainer = styled.div`
