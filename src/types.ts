@@ -36,7 +36,7 @@ export type ResultState = {
 
 export type AppState = {
   search: SearchState,
-  movies:ResultState,
+  movies: ResultState,
 }
 
 // Redux-thunk types

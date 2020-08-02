@@ -1,11 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, Router, Switch, Redirect } from 'react-router-dom';
 import history from './history';
 import { StyledBody } from './components/global-styled';
 import store from './store';
 import Search from './components/search';
 import Results from './components/results';
+import NotFound from './components/not-found'
 
 function App() {
   return (
@@ -14,8 +15,12 @@ function App() {
         <StyledBody />
         <Router history={history}>
           <Switch>
-            <Route path="/results/:query" component={Results} />
-            <Route path="/" component={Search} />
+            <Route exact path="/results/:query" component={Results} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/">
+              <Redirect to="/search" />
+            </Route>
+            <Route component={NotFound} />
           </Switch>
         </Router>
       </React.Fragment>

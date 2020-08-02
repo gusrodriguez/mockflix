@@ -10,7 +10,7 @@ export const StyledCardHover = styled.div`
   width: 300px;
   height: 382px;
   visibility: hidden;
-  top: 21px;
+  top: ${sizes.s};
   backgound-color: rgba(0,0,0,0);
   transition: background-color 300ms;
 `;
@@ -61,7 +61,7 @@ export const StyledImageWrapper = styled.div`
 `;
 
 export const StyledCardContainer = styled.div`
-  padding:1%;
+  padding:${sizes.s};
   position:relative;
   &:hover {
     ${StyledCardHover} {
