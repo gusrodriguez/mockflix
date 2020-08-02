@@ -4,10 +4,11 @@ import { loadResults, loadBackground } from './actions';
 import { AppState  } from '../../types';
 
 export const mapStateToProps = (state: AppState) => {
-  const { movies : { results, backgroundLoaded } } = state;
+  const { movies : { results, backgroundLoaded, status } } = state;
   return ({
     results,
     backgroundLoaded,
+    status,
   })
 }
 

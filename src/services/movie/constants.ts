@@ -5,3 +5,4 @@ export const EXPECTED_RESULTS_AMOUNT = 80;
 export const getMoviesEndpoint = (query, page) => `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&include_adult=false`;
 export const getGenresEndpoint = genre => `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_adult=false&include_video=false&with_genres=${genre}`
 export const NUMBER_OF_SUGGESTIONS = 10;
+export const FALLBACK_GENRE = 12;

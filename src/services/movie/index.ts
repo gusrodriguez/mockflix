@@ -4,6 +4,7 @@ import {
   CONFIGURATION_ENDPOINT,
   EXPECTED_RESULTS_AMOUNT,
   NUMBER_OF_SUGGESTIONS,
+  FALLBACK_GENRE,
 } from "./constants";
 
 import { Movie, MovieService, MovieApiResult } from "../../types";
@@ -37,7 +38,7 @@ class MovieDbService implements MovieService {
     const [genre] = firstResult.genre_ids;
 
     // Fill the related movies array
-    const { data: { results: relatedResults } } = await this.axios(getGenresEndpoint(genre));
+    const { data: { results: relatedResults } } = await this.axios(getGenresEndpoint(genre || FALLBACK_GENRE));
 
     this.relatedMovies = [...this.mapResultsToMovies(relatedResults, baseUrl)];
 

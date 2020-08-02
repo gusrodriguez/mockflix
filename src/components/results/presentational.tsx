@@ -3,12 +3,14 @@ import chunk from 'lodash/chunk';
 import Zoom from 'react-reveal/Zoom';
 import Header from '../header';
 import Carousel from '../carousel';
+import NoResults from '../no-results';
 
 import {
   StyledResultsWrapper,
 } from './styled';
 
 import { Movie } from '../../types';
+import { RESULT_STATUS } from '../../enums';
 
 type matchType = { params: { query: string } };
 type ResultsProps = {
@@ -17,6 +19,7 @@ type ResultsProps = {
   backgroundLoaded: boolean,
   onLoadBackground: () => void,
   onLoadResults: (query: string) => void,
+  status: string,
 }
 
 function Results(props: ResultsProps) {
@@ -24,6 +27,7 @@ function Results(props: ResultsProps) {
     match,
     results,
     backgroundLoaded,
+    status,
     onLoadResults,
     onLoadBackground,
   } = props;
@@ -43,8 +47,9 @@ function Results(props: ResultsProps) {
   // Divide the results array in two, for filling the two sliders
   const half = Math.ceil(results.length / 2);
 
-  const [firstSliderSource, secondSliderSource] = chunk(results , half);
+  const [firstSliderSource, secondSliderSource] = chunk(results, half);
 
+  debugger;
   return (
     <React.Fragment>
       {
@@ -53,16 +58,23 @@ function Results(props: ResultsProps) {
           <React.Fragment>
             <Header showBack={true} />
             <StyledResultsWrapper>
-              <Zoom when={resultsLoaded}>
-                <Carousel source={firstSliderSource} />
-                <Carousel source={secondSliderSource} />
-              </Zoom>
+              {
+                status === RESULT_STATUS.INPUT && (results && results.length === 0) ?
+                    <NoResults />
+                  :
+                  (
+                    <Zoom when={resultsLoaded}>
+                      <Carousel source={firstSliderSource} />
+                      <Carousel source={secondSliderSource} />
+                    </Zoom>
+                  )
+              }
             </StyledResultsWrapper>
           </React.Fragment>
           :
           null
       }
-    </React.Fragment>
+    </React.Fragment >
   );
 }
 

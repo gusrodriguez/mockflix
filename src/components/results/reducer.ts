@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { ResultState } from '../../types';
-import {  StatusType } from '../../enums';
+import {  StatusType, RESULT_STATUS } from '../../enums';
 
 export const DEFAULT_STATE: ResultState = {
   results: [],
@@ -13,15 +13,11 @@ export default (handleActions({
   FINISH_LOADING_RESULTS: (state, { payload: { results } } ) => ({
     ...state,
     results,
-    status: 'INPUT',
+    status: RESULT_STATUS.INPUT,
   }),
   FINISH_LOADING_BACKGROUND: state => ({
     ...state,
     backgroundLoaded: true,
-  }),
-  ERROR_LOADING_RESULTS: (state, { payload: { error } }) => ({
-    ...state,
-    error,
   }),
 },
   DEFAULT_STATE
