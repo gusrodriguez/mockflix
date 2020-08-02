@@ -1,6 +1,6 @@
 # mockflix
 
-Just fooling around to practise TypeScript
+Just practising some TypeScript
 
 ## Install dependencies
 ```

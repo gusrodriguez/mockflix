@@ -2,7 +2,12 @@ import React from 'react';
 import IconClose from '../icon-close';
 import { StyledInput, IconCloseWrapper } from './styled';
 
-function Input(props) {
+type InputProps = {
+  value: string,
+  onSuggestionsClearRequested: () => void,
+}
+
+function Input(props: InputProps) {
   const { value, onSuggestionsClearRequested } = props;
   return (
     <React.Fragment>

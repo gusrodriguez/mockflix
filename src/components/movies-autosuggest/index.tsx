@@ -13,18 +13,21 @@ import {
 } from '../../types';
 import { KeyCodes } from '../../enums';
 
-function MoviesAutosuggest(props) {
+type MoviesAutosuggestProps = {
+  onLoadSuggestions: (value: string) => Array<string>,
+}
+
+function MoviesAutosuggest(props: MoviesAutosuggestProps) {
   const {
     onLoadSuggestions,
   } = props;
 
-  const DEFAULT_SUGGESTION_STATE = {
+  const DEFAULT_SUGGESTION_STATE: SuggestionsState = {
     value: '',
     suggestions: [],
-    valueSelected: false,
   };
 
-  const DEFAULT_DEBOUNCE_STATE = {
+  const DEFAULT_DEBOUNCE_STATE: DebounceState = {
     isDebounced: false,
     fn: null,
   }

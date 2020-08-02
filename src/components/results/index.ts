@@ -5,6 +5,7 @@ import { AppState  } from '../../types';
 
 export const mapStateToProps = (state: AppState) => {
   const { movies : { results, backgroundLoaded, status } } = state;
+
   return ({
     results,
     backgroundLoaded,

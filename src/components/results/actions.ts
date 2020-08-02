@@ -14,6 +14,7 @@ export const loadResults = (query: string): AppThunk =>
       dispatch(finishLoadingResults(results));
       return results;
     } catch {
+      // If the api does't find results, it will raise an error.
       dispatch(finishLoadingResults([]));
     }
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyledText, StyledLink } from './styled';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as strings from './strings';
 
-function Message(props) {
+function Message(props: RouteComponentProps) {
   const { history } = props;
 
   const backToSearch = () => {
