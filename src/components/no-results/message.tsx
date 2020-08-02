@@ -13,7 +13,7 @@ function Message(props: RouteComponentProps) {
   return(
     <StyledText >
       {strings.NO_RESULTS_START_TEXT}
-      <StyledLink onClick={backToSearch}>back to SEARCH</StyledLink>
+      <StyledLink onClick={backToSearch}>{strings.BACK_TO_SEARCH}</StyledLink>
       {strings.NO_RESULTS_END_TEXT}
     </StyledText>
   )
