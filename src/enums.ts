@@ -6,8 +6,3 @@ export enum StatusType {
 export enum KeyCodes {
   ENTER = 13,
 }
-
-export enum RESULT_STATUS {
-  INPUT = 'INPUT',
-  OFF = 'OFF,'
-}

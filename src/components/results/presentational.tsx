@@ -10,7 +10,7 @@ import {
 } from './styled';
 
 import { Movie } from '../../types';
-import { RESULT_STATUS } from '../../enums';
+import { StatusType } from '../../enums';
 
 type matchType = { params: { query: string } };
 type ResultsProps = {
@@ -59,7 +59,7 @@ function Results(props: ResultsProps) {
             <Header showBack={true} />
             <StyledResultsWrapper>
               {
-                status === RESULT_STATUS.INPUT && (results && results.length === 0) ?
+                status === StatusType.INPUT && (results && results.length === 0) ?
                     <NoResults />
                   :
                   (
