@@ -49,7 +49,6 @@ function Results(props: ResultsProps) {
 
   const [firstSliderSource, secondSliderSource] = chunk(results, half);
 
-  debugger;
   return (
     <React.Fragment>
       {

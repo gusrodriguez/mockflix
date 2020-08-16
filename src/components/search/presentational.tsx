@@ -2,13 +2,24 @@ import React, { useEffect } from 'react';
 import FontFaceObserver from 'fontfaceobserver';
 import MoviesAutosuggest from '../movies-autosuggest';
 import Header from '../header';
+import { AnyAction } from 'redux';
 import { StyledForm, StyledSearchContainer } from './styled';
 
-function Search(props) {
+type SearchProps = {
+  backgroundLoaded: boolean,
+  isSearchActive: boolean,
+  onLoadBackground: () => void,
+  onLoadSuggestions: (value: string) => Promise<Array<string>>,
+  onActivateSearch: (isActiveSearch: boolean) => AnyAction,
+};
+
+function Search(props: SearchProps) {
   const {
     backgroundLoaded,
+    isSearchActive,
     onLoadBackground,
     onLoadSuggestions,
+    onActivateSearch,
   } = props;
 
   // Convert the font loading in a promise and wait for it to load
@@ -20,7 +31,7 @@ function Search(props) {
   useEffect(() => {
     const initialize = async (): Promise<void> => {
       await font.load();
-      await onLoadBackground();
+      onLoadBackground();
     };
     initialize();
   }, []);
@@ -34,7 +45,11 @@ function Search(props) {
             <Header showBack={false} />
             <StyledSearchContainer>
               <StyledForm>
-                <MoviesAutosuggest onLoadSuggestions={onLoadSuggestions} />
+                <MoviesAutosuggest
+                  onLoadSuggestions={onLoadSuggestions}
+                  onActivateSearch={onActivateSearch}
+                  isSearchActive={isSearchActive}
+                />
               </StyledForm>
             </StyledSearchContainer>
           </React.Fragment>

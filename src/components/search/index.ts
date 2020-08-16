@@ -1,17 +1,26 @@
 import { connect } from 'react-redux';
 import Search from './presentational';
-import { loadBackground, loadSuggestions } from './actions';
+import {  AppState, AppThunkDispatch } from '../../types';
 
-export const mapStateToProps = (state) => {
-  const { search : { backgroundLoaded } } = state;
+import {
+  loadBackground,
+  loadSuggestions,
+  toggleActivateSearch,
+} from './actions';
+import { AnyAction } from 'redux';
+
+export const mapStateToProps = (state: AppState) => {
+  const { search : { backgroundLoaded, isSearchActive } } = state;
   return ({
     backgroundLoaded,
+    isSearchActive,
   })
 }
 
-export const actions = {
-  onLoadBackground: loadBackground,
-  onLoadSuggestions: loadSuggestions,
-}
+export const actions = (dispatch : AppThunkDispatch) => ({
+  onLoadBackground: (): void => dispatch(loadBackground()),
+  onLoadSuggestions: (query: string): Promise<Array<string>>  => dispatch(loadSuggestions(query)),
+  onActivateSearch: (isSearchActive: boolean): AnyAction => dispatch(toggleActivateSearch(isSearchActive)),
+});
 
 export default connect(mapStateToProps, actions)(Search);

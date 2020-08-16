@@ -7,7 +7,7 @@ export const finishLoadingResults = createAction('FINISH_LOADING_RESULTS', (resu
 export const errorLoadingResults = createAction('ERROR_LOADING_RESULTS', (error: string) => { error });
 export const finishLoadingBackground = createAction('FINISH_LOADING_BACKGROUND', () => undefined);
 
-export const loadResults = (query: string): AppThunk =>
+export const loadResults = (query: string): AppThunk<void> =>
   async(dispatch, getState, { movieService }) => {
     try {
       const results = await movieService.loadMovies(query);
@@ -19,7 +19,7 @@ export const loadResults = (query: string): AppThunk =>
     }
   }
 
-export const loadBackground = (): AppThunk =>
+export const loadBackground = (): AppThunk<void> =>
   async (dispatch) => {
     await preloadImage(backgroundImage);
     dispatch(finishLoadingBackground());

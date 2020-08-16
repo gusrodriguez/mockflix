@@ -1,6 +1,6 @@
 # mockflix
 
-Just practising some TypeScript
+An emulation of a very known movies platform, combining Typescript with Redux Thunk and implementing a custom Carousel wiith react-reveal.
 
 ## Install dependencies
 ```
@@ -20,7 +20,5 @@ Just practising some TypeScript
     - StyledComponents
     - React-reveal for animations
     - Webpack 4 for building
-    - Jest + Enzyme for unit testing
-
 ```
 

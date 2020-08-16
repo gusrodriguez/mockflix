@@ -5,6 +5,7 @@ import { StatusType } from '../../enums';
 export const DEFAULT_STATE = {
   backgroundLoaded: false,
   status: StatusType.OFF,
+  isSearchActive: false,
 };
 
 export default (handleActions({
@@ -13,6 +14,12 @@ export default (handleActions({
     backgroundLoaded: true,
     status: StatusType.INPUT,
   }),
+  TOGGLE_ACTIVATE_SEARCH: (state, { payload: { isSearchActive } }) => {
+    return ({
+    ...state,
+    isSearchActive,
+  })
+},
 },
   DEFAULT_STATE
 ));

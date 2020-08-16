@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
 import debounce from 'lodash/debounce';
-import Input from '../input';
+import { Input, InputProps } from '../input';
 import { SEARCH_NOW_LABEL } from './strings';
 import Button from '../button';
 import { SEARCH_PLACEHOLDER, getResultsRoute } from './strings';
@@ -14,12 +14,16 @@ import {
 import { KeyCodes } from '../../enums';
 
 type MoviesAutosuggestProps = {
-  onLoadSuggestions: (value: string) => Array<string>,
+  onLoadSuggestions: (value: string) => Promise<Array<string>>,
+  onActivateSearch: (isSearchActive: boolean) => void,
+  isSearchActive: boolean,
 }
 
 function MoviesAutosuggest(props: MoviesAutosuggestProps) {
   const {
     onLoadSuggestions,
+    onActivateSearch,
+    isSearchActive,
   } = props;
 
   const DEFAULT_SUGGESTION_STATE: SuggestionsState = {
@@ -36,7 +40,7 @@ function MoviesAutosuggest(props: MoviesAutosuggestProps) {
   const [debounceState, setDebounceState] = useState<DebounceState>(DEFAULT_DEBOUNCE_STATE);
 
   // fully reload on purpose, to workaround the issue of react router cache messing the carousels animation effect
-  const redirect = route => { window.location.href = route };
+  const redirect = (route: string) => { window.location.href = route };
 
   const onSuggestionsFetchRequested = async ({ value }) => {
     const results: Array<string> = await onLoadSuggestions(value);
@@ -55,6 +59,7 @@ function MoviesAutosuggest(props: MoviesAutosuggestProps) {
   }
 
   const onChange = (event, { newValue }) => {
+    onActivateSearch(!!newValue);
     setSuggestionsState(prevState => ({
       ...prevState,
       suggestions: newValue ? prevState.suggestions : [],
@@ -88,7 +93,7 @@ function MoviesAutosuggest(props: MoviesAutosuggestProps) {
     );
   }
 
-  const getSuggestionValue = suggestion => suggestion;
+  const getSuggestionValue = (suggestion: string) => suggestion;
 
   const renderSuggestionsContainer = ({ containerProps, children }) => (
     <div onClick={onSuggestionClick} {...containerProps}>
@@ -104,7 +109,7 @@ function MoviesAutosuggest(props: MoviesAutosuggestProps) {
     onKeyDown,
   };
 
-  const renderInputComponent = inputProps => <Input {...inputProps} />
+  const renderInputComponent = (inputProps: InputProps) => <Input {...inputProps} />
 
   return (
     <React.Fragment>
@@ -119,7 +124,7 @@ function MoviesAutosuggest(props: MoviesAutosuggestProps) {
           inputProps={inputProps}
         />
       </AutosuggestStylesWrapper>
-      <Button onClick={onButtonClick} text={SEARCH_NOW_LABEL} />
+      <Button onClick={onButtonClick} text={SEARCH_NOW_LABEL} isActive={isSearchActive} />
     </React.Fragment>
   );
 }

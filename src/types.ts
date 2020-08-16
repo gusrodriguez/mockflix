@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 // Services
 export type MovieApiResult = {
@@ -25,6 +25,7 @@ export type Movie = {
 export type SearchState = {
   status: string,
   backgroundLoaded: boolean,
+  isSearchActive: boolean,
 }
 
 export type ResultState = {
@@ -40,11 +41,13 @@ export type AppState = {
 }
 
 // Redux-thunk types
-type ExtraArgument = {
+export type ExtraArgument = {
   movieService: MovieService
 }
 
-export type AppThunk = ThunkAction<void, AppState, ExtraArgument, AnyAction>
+export type AppThunk<T> = ThunkAction<T, AppState, ExtraArgument, AnyAction>
+
+export type AppThunkDispatch = ThunkDispatch<AppState, ExtraArgument, AnyAction>;
 
 // States
 export type SuggestionsState = {
