@@ -4,8 +4,8 @@
 
 An emulation of a very well known movies platform (yes, the one with the black background and red fonts :black_large_square::red_square: ), combining Typescript with Redux Thunk and implementing a custom Carousel wiith react-reveal.
 
-## Why do I want this?
-To take a look at an animated carousel component implemented with react-reveal, that will recalculate the amount of items on resize.
+## What could it be useful for?
+You can reuse the animated carousel component implemented with react-reveal, that will recalculate the amount of items on resize.
 
 ### Install dependencies
 ```
@@ -27,3 +27,5 @@ npm start
 - Webpack 4 for building
 ```
 
+### Coming soon
+I will take the carousel component apart to be used as an npm package :drum:
