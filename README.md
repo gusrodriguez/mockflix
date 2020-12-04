@@ -9,12 +9,12 @@ To take a look at an animated carousel component implemented with react-reveal, 
 
 ### Install dependencies
 ```
-    npm install
+npm install
 ```
 
 ### Run the application
 ```
-    npm start
+npm start
 ```
 
 ### Tech stack
